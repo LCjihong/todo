@@ -1,0 +1,62 @@
+// Prisma Schema for Todo Application
+// 数据库：SQLite
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// 用户模型
+model User {
+  id            Int            @id @default(autoincrement())
+  username      String         @unique
+  password      String
+  refreshTokens RefreshToken[]
+  todos         Todo[]
+  groups        Group[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+}
+
+// Refresh Token 模型
+model RefreshToken {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  expiresAt DateTime
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}
+
+// Todo 模型
+model Todo {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  completed   Boolean  @default(false)
+  priority    String   @default("MEDIUM") // SQLite 不支持枚举，使用字符串类型
+  groupId     Int?
+  group       Group?   @relation(fields: [groupId], references: [id], onDelete: SetNull)
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// 注意：SQLite 不支持枚举类型，Priority 使用字符串类型
+// 有效值：'LOW', 'MEDIUM', 'HIGH'
+
+// 分组模型
+model Group {
+  id     Int     @id @default(autoincrement())
+  name   String
+  color  String?
+  userId Int
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  todos  Todo[]
+}
+
