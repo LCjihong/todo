@@ -44,3 +44,4 @@ prisma/migrations/
 # PM2
 .pm2/
 
+pnpm-lock.yaml
