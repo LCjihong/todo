@@ -3,6 +3,12 @@
  * 前端应用使用的所有类型接口
  */
 
+declare global {
+  interface Window {
+    Alpine: any
+  }
+}
+
 // API 响应类型
 export interface ApiResponse<T = any> {
   code: number;
