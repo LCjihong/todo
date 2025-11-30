@@ -1,0 +1,24 @@
+module.exports = {
+  apps: [
+    {
+      name: "todo-frontend",
+      script: "serve",
+      args: "dist -l 3302",
+      instances: 1,
+      exec_mode: "fork",
+      watch: false,
+      max_memory_restart: "200M",
+      env: {
+        NODE_ENV: "production",
+        VITE_API_BASE_URL: "http://localhost:3001/api",
+      },
+      error_file: "./logs/pm2-error.log",
+      out_file: "./logs/pm2-out.log",
+      log_date_format: "YYYY-MM-DD HH:mm:ss",
+      merge_logs: true,
+      autorestart: true,
+      max_restarts: 10,
+      min_uptime: "10s",
+    }
+  ]
+}
