@@ -16,7 +16,7 @@ import logger from './utils/logger';
 dotenv.config();
 
 const app: Express = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // 中间件配置
 app.use(cors({
