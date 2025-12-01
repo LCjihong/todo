@@ -27,7 +27,7 @@ Alpine.data('loginApp', () => ({
   init() {
     // 如果已登录，直接跳转到主页
     if (isAuthenticated()) {
-      window.location.href = '/todos.html';
+      window.location.href = '/todos';
     }
   },
 
@@ -68,7 +68,7 @@ Alpine.data('loginApp', () => ({
 
         // 跳转到主页
         setTimeout(() => {
-          window.location.href = '/todos.html';
+          window.location.href = '/todos';
         }, 500);
       } else {
         this.errorMessage = response.message || '登录失败';

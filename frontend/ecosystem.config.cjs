@@ -2,8 +2,8 @@ module.exports = {
   apps: [
     {
       name: "todo-frontend",
-      script: "serve",
-      args: "dist -l 3302",
+      script: "npm",
+      args: "run serve",
       instances: 1,
       exec_mode: "fork",
       watch: false,

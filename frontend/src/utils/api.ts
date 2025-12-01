@@ -18,7 +18,7 @@ import type {
 import { getAccessToken, setAccessToken, getRefreshToken, clearTokens } from './auth';
 
 // API 基础 URL
-const API_BASE_URL = 'http://localhost:3001/api';
+const API_BASE_URL = '/api';
 
 // 创建 axios 实例
 const apiClient: AxiosInstance = axios.create({

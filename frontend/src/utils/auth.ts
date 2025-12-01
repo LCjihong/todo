@@ -78,7 +78,7 @@ export const isAuthenticated = (): boolean => {
  */
 export const logout = (): void => {
   clearTokens();
-  window.location.href = '/login.html';
+  window.location.href = '/login';
 };
 
 /**
@@ -86,7 +86,7 @@ export const logout = (): void => {
  */
 export const requireAuth = (): void => {
   if (!isAuthenticated()) {
-    window.location.href = '/login.html';
+    window.location.href = '/login';
   }
 };
 
